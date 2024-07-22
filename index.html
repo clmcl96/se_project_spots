@@ -19,7 +19,7 @@
       <header class="header">
         <img src="./images/Logo.svg" alt="Spots Logo" class="header__logo" />
       </header>
-      <main class="main">
+      <main class="content">
         <section class="profile">
           <img
             src="./images/avatar.jpg"
@@ -29,12 +29,11 @@
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
-            <a href="" class="profile__edit-profile"
-              ><img src="./images/pencil.svg" alt="Pencil icon" />Edit
-              Profile</a
-            >
+            <a href="" class="profile__edit-profile">
+              <img src="./images/pencil.svg" alt="Pencil icon" /> Edit Profile
+            </a>
           </div>
-          <button class="profile__new-post">
+          <button class="profile__new-post" type="button">
             <img
               src="./images/plus sign.svg"
               alt="Add sign"
@@ -42,18 +41,77 @@
             />New Post
           </button>
         </section>
-        <section class="grid">
-          <div class="grid__card">
-            <img
-              class="grid__card_image"
-              src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-            />
-            <p class="grid__card_title">Val Thorens</p>
-            <img class="grid__card_heart" src=>
-          </div>
+        <section class="cards">
+          <ul class="cards__list">
+            <li class="card">
+              <img
+                class="card__image"
+                alt="Val Thorens"
+                src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">Val Thorens</p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/2-photo-by-ceiline-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">Restaurant terrace</p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">An outdoor cafe</p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">
+                  A very long bridge, over the forest...
+                </p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">Tunnel with morning light</p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
+              />
+              <div class="card__content">
+                <p class="card__title">Mountain house</p>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
-      <footer class="footer"></footer>
+      <footer class="footer">
+        <p class="footer__text">2023 &copy; Spots</p>
+      </footer>
     </div>
   </body>
 </html>

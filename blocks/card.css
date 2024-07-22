@@ -1,0 +1,41 @@
+.card {
+}
+
+.card__image {
+  width: 100%;
+  height: 413px;
+  object-fit: cover;
+}
+
+.card__title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500px;
+  margin: 0;
+}
+
+.card__heart-button {
+  background-image: url(../images/Like-icon.svg);
+  width: 23px;
+  height: 20px;
+  border: none;
+  opacity: 40%;
+}
+
+.card__heart-button:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+@media screen and (max-width: 627px) {
+  .card__image {
+    height: 288px;
+  }
+}
