@@ -40,18 +40,28 @@
 .profile__name {
   font-size: 32px;
   font-weight: 500;
+  max-width: 420px;
   line-height: 1;
   color: #212121;
   margin-bottom: 12px;
   text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .profile__description {
   font-size: 16px;
   line-height: 16px;
+  max-width: 420px;
   font-weight: 500;
   color: rgba(33, 33, 33, 0.7);
   text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .profile__column {
