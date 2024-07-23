@@ -27,3 +27,5 @@ Just put the finishing touches on the project and it is ready to be submitted. I
 Video link: https://drive.google.com/file/d/1li_5blb5ORjxvdBfegXoWpFJ-CkUGi6N/view?usp=sharing
 
 Sorry if I drone on too much during the video. If no one is there to interact with/stop me I have a tendency to ramble.
+
+Link to the github pages: https://clmcl96.github.io/se_project_spots/
