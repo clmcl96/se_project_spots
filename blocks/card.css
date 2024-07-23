@@ -13,6 +13,7 @@
 
 .card__heart-button {
   background-image: url(../images/Like-icon.svg);
+  background-color: #fcf5e5;
   width: 23px;
   height: 20px;
   border: none;

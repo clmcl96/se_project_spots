@@ -23,3 +23,7 @@ Good luck and have fun!
 ### Project submission number 1
 
 Just put the finishing touches on the project and it is ready to be submitted. I got stuck on a couple of issues that didn't allow the webpage to look quite right when I scaled them down to mobile view but was able to figure out the issue going on there. I now know how important it is not to get width and max-width confused. Next, I'll be deploying the finished project to github pages and then I'll be recording the video and pasting the link below.
+
+Video link: https://drive.google.com/file/d/1li_5blb5ORjxvdBfegXoWpFJ-CkUGi6N/view?usp=sharing
+
+Sorry if I drone on too much during the video. If no one is there to interact with/stop me I have a tendency to ramble.
