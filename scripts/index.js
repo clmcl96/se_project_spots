@@ -45,6 +45,7 @@ const profileCloseButton = editProfileModal.querySelector(
 const newPostButton = document.querySelector(".profile__new-post");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostClosebtn = newPostModal.querySelector(".modal__close-button");
+const cardSubmitBtn = document.querySelector(".modal__submit");
 const newPostForm = newPostModal.querySelector("#new-post-form");
 const cardLinkInput = newPostModal.querySelector("#new-post-link");
 const cardCaptionInput = newPostModal.querySelector("#card-caption");
@@ -75,8 +76,9 @@ function handleNewPostSubmit(evt) {
   };
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
-  closeModal(newPostModal);
   evt.target.reset();
+  disableButton(cardSubmitBtn);
+  closeModal(newPostModal);
 }
 
 function getCardElement(data) {

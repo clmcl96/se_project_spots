@@ -63,10 +63,24 @@
         <div class="modal__container">
           <button type="submit" class="modal__close-button"></button>
           <h2 class="modal__title">Edit Profile</h2>
-          <form class="modal__form" name="edit-profile" id="edit-profile-form">
+          <form
+            class="modal__form"
+            name="edit-profile"
+            id="edit-profile-form"
+            novalidate
+          >
             <label for="name" class="modal__label"
-              >Name <input type="text" class="modal__input" id="name"
-            /></label>
+              >Name
+              <input
+                type="text"
+                class="modal__input"
+                id="name"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="modal__error" id="name-error"></span>
+            </label>
 
             <label for="new-post-description" class="modal__label"
               >Description
@@ -74,7 +88,15 @@
                 type="text"
                 id="edit-profile-description"
                 class="modal__input"
-            /></label>
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <span
+                class="modal__error"
+                id="edit-profile-description-error"
+              ></span>
+            </label>
             <button type="submit" class="modal__submit">Save</button>
           </form>
         </div>
@@ -83,7 +105,12 @@
         <div class="modal__container">
           <button type="submit" class="modal__close-button"></button>
           <h2 class="modal__title">New Post</h2>
-          <form class="modal__form" name="new-post" id="new-post-form">
+          <form
+            class="modal__form"
+            name="new-post"
+            id="new-post-form"
+            novalidate
+          >
             <label for="new-post-link" class="modal__label"
               >Image link
               <input
@@ -91,7 +118,10 @@
                 class="modal__input"
                 id="new-post-link"
                 placeholder="Paste a link to the picture"
-            /></label>
+                required
+              />
+              <span class="modal__error" id="new-post-link-error"></span>
+            </label>
 
             <label for="caption" class="modal__label"
               >Caption
@@ -100,7 +130,12 @@
                 id="card-caption"
                 class="modal__input"
                 placeholder="Type your caption"
-            /></label>
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <span class="modal__error" id="card-caption-error"></span>
+            </label>
             <button type="submit" class="modal__submit">Save</button>
           </form>
         </div>
@@ -117,5 +152,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
