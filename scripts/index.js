@@ -144,6 +144,8 @@ newPostButton.addEventListener("click", () => {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscKey);
+  modal.removeEventListener("click", handleOverlayClick);
 }
 
 function saveProfileChanges(evt) {
