@@ -1,0 +1,11 @@
+{
+  "name": "se_project_spots",
+  "version": "1.0.0",
+  "description": "project SPOTS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carson McLean",
+  "license": "ISC"
+}
