@@ -1,43 +1,68 @@
 import "./index.css";
 import { enableValidation, settings } from "../scripts/validation.js";
+import Api from "../utils/Api.js";
 
-const initialCards = [
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-    alt: "Val Thorens",
+// const initialCards = [
+//   {
+//     name: "Val Thorens",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+//     alt: "Val Thorens",
+//   },
+//   {
+//     name: "Restaurant terrace",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
+//     alt: "A restaurant terrace",
+//   },
+//   {
+//     name: "An outdoor cafe",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
+//     alt: "An outdoor cafe",
+//   },
+//   {
+//     name: "A very long bridge, over the forest and through the trees",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
+//     alt: "A long bridge",
+//   },
+//   {
+//     name: "Tunnel with morning light",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+//     alt: "Tunnell with morning light",
+//   },
+//   {
+//     name: "Mountain house",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+//     alt: "A house in the mountains",
+//   },
+//   {
+//     name: "Golden Gate Bridge",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+//     alt: "Golden Gate bridge on a foggy day",
+//   },
+// ];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "6e2778bd-e26b-4b4f-bace-49007ef07e3d",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-    alt: "A restaurant terrace",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-    alt: "An outdoor cafe",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-    alt: "A long bridge",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-    alt: "Tunnell with morning light",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-    alt: "A house in the mountains",
-  },
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-    alt: "Golden Gate bridge on a foggy day",
-  },
-];
+});
+
+api
+  .getAppInfo()
+  .then(([cards, users]) => {
+    console.log(cards, users);
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+    profileAvatar.src = users.avatar;
+    profileName.textContent = users.name;
+    profileDescription.textContent = users.about;
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 const profileEditButton = document.querySelector(".profile__edit-profile");
 const editProfileModal = document.querySelector("#edit-profile-modal");
@@ -55,6 +80,7 @@ const cardCaptionInput = newPostModal.querySelector("#card-caption");
 
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 const modalName = editProfileModal.querySelector("#name");
 const modalDescription = editProfileModal.querySelector(
@@ -153,9 +179,18 @@ function closeModal(modal) {
 
 function saveProfileChanges(evt) {
   evt.preventDefault();
-  profileName.textContent = modalName.value;
-  profileDescription.textContent = modalDescription.value;
-  closeModal(editProfileModal);
+  const cardSubmitBtn = evt.submitter;
+  api
+    .editUserInfo({ name: modalName.value, about: modalDescription.value })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error)
+    .finally(() => {
+      cardSubmitBtn.textContent = "Save";
+    });
 }
 
 profileCloseButton.addEventListener("click", () => {
@@ -169,9 +204,9 @@ newPostClosebtn.addEventListener("click", () => {
 profileForm.addEventListener("submit", saveProfileChanges);
 newPostForm.addEventListener("submit", handleNewPostSubmit);
 
-initialCards.forEach((item) => {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
+// initialCards.forEach((item) => {
+//   const cardElement = getCardElement(item);
+//   cardsList.append(cardElement);
+// });
 
 enableValidation(settings);
