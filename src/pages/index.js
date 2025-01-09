@@ -179,7 +179,7 @@ function closeModal(modal) {
 
 function saveProfileChanges(evt) {
   evt.preventDefault();
-  const cardSubmitBtn = evt.submitter;
+
   api
     .editUserInfo({ name: modalName.value, about: modalDescription.value })
     .then((data) => {
