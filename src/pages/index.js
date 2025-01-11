@@ -85,7 +85,8 @@ const editAvatarModal = document.querySelector("#edit-avatar-modal");
 const editAvatarButton = document.querySelector(".profile__avatar-btn");
 const avatarSubmitButton = editAvatarModal.querySelector(".modal__submit");
 const avatarCloseBtn = editAvatarModal.querySelector(".modal__close-button");
-const avatarForm = editAvatarModal.querySelector("#edit-avatar");
+const avatarForm = editAvatarModal.querySelector("#edit-avatar-form");
+const avatarValue = editAvatarModal.querySelector("#profile-avatar-input");
 
 const modalName = editProfileModal.querySelector("#name");
 const modalDescription = editProfileModal.querySelector(
@@ -118,11 +119,13 @@ function handleNewPostSubmit(evt) {
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   api
-    .editAvatarInfo(avatarInput.value)
+    .editAvatarInfo(avatarValue.value)
     .then((data) => {
-      profileAvatar.src = data.avatar;
+      avatarValue.src = data.avatar;
     })
     .catch(console.error);
+  disableButton(avatarSubmitBtn);
+  closeModal(editAvatarModal);
 }
 
 function getCardElement(data) {
