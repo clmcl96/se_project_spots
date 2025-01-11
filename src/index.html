@@ -24,11 +24,20 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            src="<%=require('./images/avatar.jpg')%>"
-            class="profile__avatar"
-            alt="Bessie Coleman photo"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img
+                src="<%=require('./images/pencil.svg')%>"
+                alt="Pencil icon"
+                class="profile__pencil-icon"
+              />
+            </button>
+            <img
+              src="<%=require('./images/avatar.jpg')%>"
+              class="profile__avatar"
+              alt="Bessie Coleman photo"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -156,6 +165,32 @@
           <img class="modal__image" src="" alt="" />
           <p class="modal__caption"></p>
         </div>
+      </div>
+    </div>
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container">
+        <button type="submit" class="modal__close-button"></button>
+        <h2 class="modal__title">Edit Avatar</h2>
+        <form
+          class="modal__form"
+          name="edit-avatar"
+          id="edit-avatar-form"
+          novalidate
+        >
+          <label for="avatar" class="modal__label"
+            >Avatar
+            <input
+              type="url"
+              class="modal__input"
+              id="avatar"
+              name="avatar"
+              placeholder="Paste link here"
+              required
+            />
+            <span class="modal__error" id="avatar-error"></span>
+          </label>
+          <button type="submit" class="modal__submit">Save</button>
+        </form>
       </div>
     </div>
   </body>
