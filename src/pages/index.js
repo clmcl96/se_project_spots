@@ -1,6 +1,5 @@
 import "./index.css";
 import { enableValidation, settings } from "../scripts/validation.js";
-import { setButtonText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
 
 // const initialCards = [
@@ -111,21 +110,8 @@ const cardsList = document.querySelector(".cards__list");
 let selectedCard;
 let selectedCardId;
 
-// function handleNewPostSubmit(evt) {
-//   evt.preventDefault();
-//   const inputValues = {
-//     name: cardCaptionInput.value,
-//     link: cardLinkInput.value,
-//   };
-//   const cardEl = getCardElement(inputValues);
-//   cardsList.prepend(cardEl);
-//   evt.target.reset();
-//   disableButton(cardSubmitBtn, settings);
-//   closeModal(newPostModal);
-// }
-
 function handleAvatarSubmit(evt) {
-  evt.preventDefault(submitBtn, true, "Saving...", "Save");
+  evt.preventDefault();
 
   const submitBtn = evt.submitter;
   submitBtn.textContent = "Saving...";
@@ -133,14 +119,13 @@ function handleAvatarSubmit(evt) {
   api
     .editAvatarInfo(avatarValue.value)
     .then((data) => {
-      avatarValue.src = avatar.data;
+      profileAvatar.src = data.avatar;
     })
     .catch(console.error)
     .finally(() => {
       submitBtn.textContent = "Save";
     });
   evt.target.reset();
-  enableValidation(avatarSubmitButton, settings);
   closeModal(editAvatarModal);
 }
 
@@ -317,10 +302,5 @@ profileForm.addEventListener("submit", saveProfileChanges);
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 deleteForm.addEventListener("submit", handleDeleteSubmit);
-
-// initialCards.forEach((item) => {
-//   const cardElement = getCardElement(item);
-//   cardsList.append(cardElement);
-// });
 
 enableValidation(settings);
