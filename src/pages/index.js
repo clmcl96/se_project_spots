@@ -124,7 +124,8 @@ function handleAvatarSubmit(evt) {
       avatarValue.src = data.avatar;
     })
     .catch(console.error);
-  disableButton(avatarSubmitBtn);
+  evt.target.reset();
+  disableButton(avatarSubmitButton, settings);
   closeModal(editAvatarModal);
 }
 
