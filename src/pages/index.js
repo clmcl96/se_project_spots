@@ -126,9 +126,10 @@ function handleAvatarSubmit(evt) {
   renderLoading(true, submitBtn);
 
   api
-    .editAvatarInfo(avatarValue.value)
+    .editAvatarInfo(avatar.value)
     .then((data) => {
       profileAvatar.src = data.avatar;
+      disableButton(submitBtn, settings);
       evt.target.reset();
       closeModal(editAvatarModal);
     })
@@ -272,6 +273,7 @@ profileEditButton.addEventListener("click", () => {
 
 newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
+  resetValidation(newPostForm, settings);
 });
 
 editAvatarButton.addEventListener("click", () => {
