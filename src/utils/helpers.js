@@ -13,11 +13,18 @@ export function renderLoading(
   }
 }
 
+// export function checkResponse(res) {
+//   (res) => {
+//     if (res.ok) {
+//       return res.json();
+//     }
+//     Promise.reject(`Error: ${res.status}`);
+//   };
+// }
+
 export function checkResponse(res) {
-  (res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    Promise.reject(`Error: ${res.status}`);
-  };
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
 }

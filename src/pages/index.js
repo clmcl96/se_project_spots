@@ -301,6 +301,7 @@ function saveProfileChanges(evt) {
     .catch(console.error)
     .finally(() => {
       renderLoading(false, submitBtn);
+      disableButton(submitBtn, settings);
     });
 }
 

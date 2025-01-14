@@ -13,6 +13,7 @@
 
 .profile__avatar-btn::after {
   content: "Edit Avatar";
+  cursor: pointer;
 }
 
 .profile__avatar-container {

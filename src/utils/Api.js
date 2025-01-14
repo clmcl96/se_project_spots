@@ -13,21 +13,13 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then(this.checkResponse);
+    }).then(checkResponse);
   }
 
-  // other methods for working with the API
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this.checkResponse);
-
-    //   (res) => {
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   Promise.reject(`Error: ${res.status}`);
-    // });
+    }).then(checkResponse);
   }
 
   editUserInfo({ name, about }) {
@@ -38,14 +30,7 @@ class Api {
         name,
         about,
       }),
-    }).then(this.checkResponse);
-
-    // ((res) => {
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   Promise.reject(`Error: ${res.status}`);
-    // });
+    }).then(checkResponse);
   }
 
   editAvatarInfo(avatar) {
@@ -55,14 +40,7 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then(this.checkResponse);
-
-    // ((res) => {
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   Promise.reject(`Error: ${res.status}`);
-    // });
+    }).then(checkResponse);
   }
 
   addNewCard({ name, link }) {
@@ -73,42 +51,21 @@ class Api {
         name,
         link,
       }),
-    }).then(this.checkResponse);
-
-    // ((res) => {
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   Promise.reject(`Error: ${res.status}`);
-    // });
+    }).then(checkResponse);
   }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this.checkResponse);
+    }).then(checkResponse);
   }
-  // ((res) => {
-  //   if (res.ok) {
-  //     return res.json();
-  //   }
-  //   Promise.reject(`Error: ${res.status}`);
-  // });
 
   toggleLike(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-    }).then(this.checkResponse);
-
-    //   ((res) => {
-    //     if (res.ok) {
-    //       return res.json();
-    //     }
-    //     Promise.reject(`Error: ${res.status}`);
-    //   });
-    // }
+    }).then(checkResponse);
   }
 }
 export default Api;
