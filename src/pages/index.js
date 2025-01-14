@@ -6,7 +6,6 @@ import {
   resetValidation,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
-import { checkResponse } from "../utils/helpers.js";
 import { renderLoading } from "../utils/helpers.js";
 
 // const initialCards = [
@@ -175,7 +174,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(false, submitBtn, "Deleting...");
+      renderLoading(false, submitBtn, initialText);
     });
 }
 
@@ -290,7 +289,7 @@ function saveProfileChanges(evt) {
   evt.preventDefault();
 
   const submitBtn = evt.submitter;
-  submitBtn.textContent = "Saving...";
+  renderLoading(true, submitBtn);
 
   api
     .editUserInfo({ name: modalName.value, about: modalDescription.value })
@@ -301,7 +300,7 @@ function saveProfileChanges(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      submitBtn.textContent = "Save";
+      renderLoading(false, submitBtn);
     });
 }
 
